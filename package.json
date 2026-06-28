@@ -1,0 +1,13 @@
+{
+  "name": "playwright-bdd-login-tests",
+  "version": "1.0.0",
+  "description": "Playwright BDD Login Test Suite",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "playwright-bdd": "^9.1.0",
+    "typescript": "^5.3.0"
+  },
+"scripts": {
+  "test:ui": "bddgen --config=playwright.config.ts && playwright test --config=playwright.config.ts --workers=1"
+}
+}
