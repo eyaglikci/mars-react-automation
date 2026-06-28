@@ -22,7 +22,8 @@ export default defineConfig({
 
   reporter: [
   ['list'],
-  ['html', { open: 'always' }]
+  ['junit', { outputFile: 'test-results/junit.xml' }],
+  ['html', { outputFolder: 'playwright-report', open: 'never' }]
 ],
 
   use: {
@@ -31,7 +32,7 @@ export default defineConfig({
     launchOptions: {
       slowMo: 700
     },
-
+    headless: process.env.CI === 'true',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure'

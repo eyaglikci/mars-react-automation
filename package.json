@@ -8,6 +8,7 @@
     "typescript": "^5.3.0"
   },
 "scripts": {
-  "test:ui": "bddgen --config=playwright.config.ts && playwright test --config=playwright.config.ts --workers=1"
+  "test:ui": "bddgen --config=playwright.config.ts && playwright test --config=playwright.config.ts --headed --workers=1",
+  "test:ci": "bddgen --config=playwright.config.ts && playwright test --config=playwright.config.ts --workers=1"
 }
 }
