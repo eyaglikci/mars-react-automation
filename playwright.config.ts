@@ -32,13 +32,13 @@ export default defineConfig({
     ]
   ],
 
-  use: {
-    headless: process.env.CI === 'true',
+ use: {
+headless: process.env.CI === 'true',
 
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    trace: 'retain-on-failure'
-  },
+screenshot: 'only-on-failure',
+video: 'off',
+trace: 'retain-on-failure'
+},
 
   projects: [
     {
