@@ -91,8 +91,9 @@ Given('kullanıcı {string} sayfasını açar', async ({ page }, url: string) =>
 });
 
 When(
-  'Kullanıcı adı alanına {string}, şifre alanına {string}, captcha alanına {string} yazar',
+  'Kullanici adi alanina {string}, sifre alanina {string}, captcha alanina {string} yazar',
   async (
+
     { page },
     username: string,
     password: string,
@@ -268,3 +269,30 @@ Then(
     await expect(result).toBeVisible();
   }
 );
+
+  When(
+'{string} combobox alanında Pasif seçmek için {string} ye ve entera basar',
+async ({ page }, fieldName: string, value: string) => {
+const frame = page.frameLocator(SYSTEM_CONFIG_IFRAME);
+
+const comboBox = frame
+  .getByText(fieldName, { exact: true })
+  .locator(
+    `xpath=following::*[
+      self::input[not(@type='hidden') and not(@disabled)]
+      or @role='combobox'
+    ][1]`
+  );
+
+await expect(comboBox).toBeVisible({ timeout: 10000 });
+
+await comboBox.click();
+
+// "Pasif" için P tuşuna basar.
+
+await page.keyboard.press(value);
+await comboBox.press('Enter');
+
+}
+);
+
