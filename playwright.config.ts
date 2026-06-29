@@ -21,18 +21,20 @@ export default defineConfig({
   fullyParallel: false,
 
   reporter: [
-  ['list'],
-  ['junit', { outputFile: 'test-results/junit.xml' }],
-  ['html', { outputFolder: 'playwright-report', open: 'never' }]
-],
+    ['list'],
+    ['junit', { outputFile: 'test-results/junit.xml' }],
+    [
+      'html',
+      {
+        outputFolder: 'playwright-report',
+        open: 'never'
+      }
+    ]
+  ],
 
   use: {
-    headless: false,
-
-    launchOptions: {
-      slowMo: 700
-    },
     headless: process.env.CI === 'true',
+
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure'
@@ -40,9 +42,10 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
+      name: 'Google Chrome',
       use: {
-        ...devices['Desktop Chrome']
+        ...devices['Desktop Chrome'],
+        channel: 'chrome'
       }
     }
   ]
